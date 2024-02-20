@@ -14,3 +14,9 @@ jobs:
 
       - name: free
         run: free -h
+      
+      - name: Print available space
+        run: df -h
+
+      - name: Print disk usage
+        run: du -h -d 2 /home/runner/
