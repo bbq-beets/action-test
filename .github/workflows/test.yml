@@ -9,10 +9,8 @@ jobs:
       - name: 'Checkout Repo'
         uses: actions/checkout@v2
 
-      - name: cat
-        run: cat test.json
+      - name: swapon
+        run: swapon -s
 
-      - name: 'Azure login'
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: free
+        run: free -h
