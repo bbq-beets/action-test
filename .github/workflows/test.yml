@@ -19,4 +19,13 @@ jobs:
         run: df -h
 
       - name: Print disk usage
-        run: du -h -d 2 /home/runner/
+        run: du -h -d 2 /mnt
+
+      - name: Print disk usage
+        run: du -h -d 2 /home/runner
+        
+      - name: Print disk usage
+        run: du -h -d 2 /home
+
+      - name: Print disk usage
+        run: du -h -d 2 /
