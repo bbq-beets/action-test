@@ -27,5 +27,11 @@ jobs:
       - name: Print disk usage of /home
         run: du -h -d 2 /home || true
 
+      - name: Print disk usage of /opt/hostedtoolcache
+        run: du -h -d 2 /opt/hostedtoolcache || true
+
+      - name: Print disk usage of /opt
+        run: du -h -d 2 /opt || true
+
       - name: Print disk usage of /
         run: du -h -d 2 /
