@@ -18,14 +18,14 @@ jobs:
       - name: Print available space
         run: df -h
 
-      - name: Print disk usage
+      - name: Print disk usage of /mnt
         run: du -h -d 2 /mnt
 
-      - name: Print disk usage
+      - name: Print disk usage of /home/runner
         run: du -h -d 2 /home/runner
         
-      - name: Print disk usage
+      - name: Print disk usage of /home
         run: du -h -d 2 /home
 
-      - name: Print disk usage
+      - name: Print disk usage of /
         run: du -h -d 2 /
