@@ -28,4 +28,4 @@ jobs:
         run: du -h -d 2 /home || true
 
       - name: Print disk usage of /
-        run: du -h -d 2 /
+        run: du -h -d 1 /
