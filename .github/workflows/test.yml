@@ -16,4 +16,10 @@ jobs:
         run: sudo swapon -s; sudo free -h;sudo swapoff /mnt/swapfile;sudo truncate -s 3G /mnt/swapfile;sudo mkswap /mnt/swapfile;sudo swapon /mnt/swapfile;sudo swapon -s; sudo free -h
 
       - name: swapfile2
-        run: sudo fallocate -l 2G /mnt/swapfile2;sudo chmod 600 /mnt/swapfile2;sudo mkswap /mnt/swapfile2;sudo swapon /mnt/swapfile2;sudo swapoff /mnt/swapfile;sudo swapon -s; sudo free -h;sudo rm /mnt/swapfile;sudo mv /mnt/swapfile2;sudo swapon -s; sudo free -h
+        run: |
+          sudo fallocate -l 2G /swapfile2;sudo chmod 600 /swapfile2;sudo mkswap /swapfile2;sudo swapon /swapfile2;sudo swapoff /mnt/swapfile
+          sudo swapon -s; sudo free -h
+          sudo rm /mnt/swapfile;sudo mv /swapfile2 /swapfile
+          sudo swapon -s; sudo free -h
+          sudo mv /swapfile /mnt/swapfile
+          sudo swapon -s; sudo free -h
