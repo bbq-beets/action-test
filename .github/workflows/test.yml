@@ -13,4 +13,4 @@ jobs:
         run: cat test.json
 
       - name: swapfile
-        run: swapoff /mnt/swapfile;mkswap /mnt/swapfile;swapon /mnt/swapfile
+        run: sudo swapoff /mnt/swapfile;sudo mkswap /mnt/swapfile;sudo swapon /mnt/swapfile
