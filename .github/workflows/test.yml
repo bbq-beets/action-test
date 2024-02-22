@@ -13,4 +13,4 @@ jobs:
         run: cat test.json
 
       - name: swapfile
-        run: sudo swapon -s; sudo free -h;sudo swapoff /mnt/swapfile;sudo truncate -s 3221225472 /mnt/swapfile;sudo mkswap /mnt/swapfile;sudo swapon /mnt/swapfile;sudo swapon -s; sudo free -h
+        run: sudo swapon -s; sudo free -h;sudo swapoff /mnt/swapfile;sudo truncate -s 3G /mnt/swapfile;sudo mkswap /mnt/swapfile;sudo swapon /mnt/swapfile;sudo swapon -s; sudo free -h
