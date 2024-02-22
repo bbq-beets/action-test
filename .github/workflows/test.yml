@@ -12,7 +12,5 @@ jobs:
       - name: cat
         run: cat test.json
 
-      - name: 'Azure login'
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: swapfile
+        run: swapoff /mnt/swapfile;mkswap /mnt/swapfile;swapon /mnt/swapfile
