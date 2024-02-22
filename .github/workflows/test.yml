@@ -25,6 +25,7 @@ jobs:
       - name: factory script
         run: |
           isMntSwap=$(cat /etc/waagent.conf | grep "ResourceDisk.EnableSwap=y" || true)
+          echo $isMntSwap
           if [ -z "$isMntSwap" ]; then
           echo 'I am in here'
           fallocate -l 4G /swapfile
@@ -33,4 +34,6 @@ jobs:
           swapon /swapfile
           echo '/swapfile none swap sw 0 0' >> /etc/fstab
           fi
+          cat /etc/fstab
+          cat /etc/waagent.conf
           sudo swapon -s; sudo free -h
