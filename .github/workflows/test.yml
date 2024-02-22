@@ -19,7 +19,5 @@ jobs:
         run: |
           sudo fallocate -l 2G /swapfile2;sudo chmod 600 /swapfile2;sudo mkswap /swapfile2;sudo swapon /swapfile2;sudo swapoff /mnt/swapfile
           sudo swapon -s; sudo free -h
-          sudo rm /mnt/swapfile;sudo mv /swapfile2 /swapfile
-          sudo swapon -s; sudo free -h
-          sudo mv /swapfile /mnt/swapfile
+          sudo rm /mnt/swapfile
           sudo swapon -s; sudo free -h
