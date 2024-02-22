@@ -26,7 +26,7 @@ jobs:
         run: |
           isMntSwap=$(cat /etc/waagent.conf | grep "ResourceDisk.EnableSwap=y" || true)
           if [ -z "$isMntSwap" ]; then
-          echo 'I'm in here'
+          echo 'I\'m in here'
           fallocate -l 4G /swapfile
           chmod 600 /swapfile
           mkswap /swapfile
