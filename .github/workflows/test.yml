@@ -21,3 +21,16 @@ jobs:
           sudo swapon -s; sudo free -h
           sudo rm /mnt/swapfile
           sudo swapon -s; sudo free -h
+
+      - name: factory script
+        run: |
+          isMntSwap=$(cat /etc/waagent.conf | grep "ResourceDisk.EnableSwap=y" || true)
+          if [ -z "$isMntSwap" ]; then
+          echo 'I'm in here'
+          fallocate -l 4G /swapfile
+          chmod 600 /swapfile
+          mkswap /swapfile
+          swapon /swapfile
+          echo '/swapfile none swap sw 0 0' >> /etc/fstab
+          fi
+          sudo swapon -s; sudo free -h
