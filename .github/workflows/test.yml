@@ -12,7 +12,9 @@ jobs:
       - name: cat
         run: cat test.json
 
-      - name: 'Azure login'
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: 'CGroup'
+        run: |
+          sudo cgrulesengd
+          cgconfigparser --load=/etc/cgconfig.conf
+          # print out config file
+          cat /etc/cgconfig.conf
