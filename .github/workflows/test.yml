@@ -28,4 +28,15 @@ jobs:
           cat /etc/cgrules.conf
           echo 'daemon.json:'
           cat /etc/docker/daemon.json
+
+      - name: OOM
+        run: |
+          # Get the PID of the 'provisioner' process
+          PROVISIONER_PID=$(pgrep provisioner)
+          # Check the current oom_score_adj value
+          echo "Current oom_score_adj value for provisioner: $(cat /proc/$PROVISIONER_PID/oom_score_adj)"
+          # Change the oom_score_adj value to -1000
+          echo -1000 > /proc/$PROVISIONER_PID/oom_score_adj
+          # Recheck the oom_score_adj value
+          echo "New oom_score_adj value for provisioner: $(cat /proc/$PROVISIONER_PID/oom_score_adj)"
           
