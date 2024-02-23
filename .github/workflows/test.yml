@@ -24,4 +24,8 @@ jobs:
           sudo mkdir /etc/cgconfig.d || true
           sudo cp /etc/cgconfig.conf /etc/cgconfig.d/ || true
           cgconfigparser --load=/etc/cgconfig.conf || true
+          echo 'cgrules.conf:'
+          cat /etc/cgrules.conf
+          echo 'daemon.json:'
+          cat /etc/docker/daemon.json
           
