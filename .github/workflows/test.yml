@@ -31,12 +31,32 @@ jobs:
 
       - name: OOM
         run: |
+          if [ -d "/mnt" ]; then
+              echo "/mnt directory does exist."
+          
+              sudo swapoff /mnt/swapfile
+              
+              # Create a 2GB swapfile under the root directory (/)
+              echo "Creating a 2GB swapfile..."
+              sudo fallocate -l 2G /swapfile
+              # Set permissions
+              sudo chmod 600 /swapfile
+              # Make the file usable as swap
+              sudo mkswap /swapfile
+              # Enable the swapfile
+              sudo swapon /swapfile    
+           
+              echo "Swapfile created and enabled successfully."
+          else
+              echo "/mnt directory doesn't exists."
+          fi
+          
           # Get the PID of the 'provisioner' process
           PROVISIONER_PID=$(pgrep provisioner)
-          # Check the current oom_score_adj value
-          sudo echo "Current oom_score_adj value for provisioner: $(sudo cat /proc/$PROVISIONER_PID/oom_score_adj)"
+          
           # Change the oom_score_adj value to -1000
           echo -1000 | sudo tee /proc/$PROVISIONER_PID/oom_score_adj
-          # Recheck the oom_score_adj value
-          sudo echo "New oom_score_adj value for provisioner: $(sudo cat /proc/$PROVISIONER_PID/oom_score_adj)"
+          
+          # Check the current oom_score_adj value
+          echo "Current oom_score_adj value for provisioner: $(cat /proc/$PROVISIONER_PID/oom_score_adj)"
           
